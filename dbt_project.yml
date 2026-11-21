@@ -10,7 +10,7 @@ config-version: 2
 profile: 'default'
 
 vars:
-   target_db: PC_DBT_DB
+   target_db: PC_DBT_DB_db
    target_schema: BRONZE
    file_format_csv: CSVFormat
    stage_name: PC_DBT_DB.PUBLIC.WalmartStorageS3
