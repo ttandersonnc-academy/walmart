@@ -1,13 +1,22 @@
-{{ config({ "materialized":'table',
- "transient":true,
- "pre_hook": copy_csv(
-     'RAW_DEPARTMENT',
-     ['STORE','DEPT','DATE','WEEKLY_SALES','ISHOLIDAY','INSERT_DTS','UPDATE_DTS','SOURCE_FILE_NAME','SOURCE_FILE_ROW_NUMBER'],
-     var('dept_file_pattern')
- ),
- "schema": 'BRONZE'
-})}}
+{{ config(
+    materialized='table',
+    transient=true,
+    pre_hook=copy_csv(
+        'LND_DEPARTMENT',
+        ['STORE','DEPT','DATE','WEEKLY_SALES','ISHOLIDAY'],
+        var('dept_file_pattern')
+    ),
+    schema='BRONZE'
+) }}
 
 SELECT
-STORE,DEPT,DATE,WEEKLY_SALES,ISHOLIDAY,INSERT_DTS,UPDATE_DTS,SOURCE_FILE_NAME,SOURCE_FILE_ROW_NUMBER
-FROM RAW_DEPARTMENT
+    STORE::NUMBER          AS STORE,
+    DEPT::NUMBER           AS DEPT,
+    DATE::DATE             AS DATE,
+    WEEKLY_SALES::NUMBER(18,2) AS WEEKLY_SALES,
+    ISHOLIDAY::BOOLEAN     AS ISHOLIDAY,
+    INSERT_DTS,
+    UPDATE_DTS,
+    SOURCE_FILE_NAME,
+    SOURCE_FILE_ROW_NUMBER
+FROM {{ source('landing', 'LND_DEPARTMENT') }}
