@@ -1,11 +1,8 @@
-{{
-config
-({
-"materialized":'table',
-"pre_hook": copy_csv('RAW_DEPARTMENT'), 
-"schema": 'BRONZE'
-})
-}}
+{{ config({ "materialized":'table',
+ "transient":true, 
+ "pre_hook": copy_csv('RAW_DEPARTMENT'),
+ "schema": 'BRONZE'
+})}}
 
 SELECT
 STORE,DEPT,DATE,WEEKLY_SALES,ISHOLIDAY,INSERT_DTS,UPDATE_DTS,SOURCE_FILE_NAME,SOURCE_FILE_ROW_NUMBER
