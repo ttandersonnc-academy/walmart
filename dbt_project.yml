@@ -13,7 +13,7 @@ vars:
    target_db: PC_DBT_DB
    target_schema: BRONZE
    file_format_csv: CSVFormat
-   stage_name: PC_DBT_DB.PUBLIC.WalmartStorageS3
+   stage_name: PC_DBT_DB.PUBLIC.WALMARTS3STAGE
    # Regexes picking each table's CSV files out of stage_name (case-sensitive)
    dept_file_pattern: '.*department.*[.]csv'
    store_file_pattern: '.*stores.*[.]csv'
