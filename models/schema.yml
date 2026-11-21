@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: raw_department
+    description: "dbt model to create the department detail raw table"
+    columns:
+      - name: STORE
+        tests:
+          - not_null
+      - name: DEPT
+        tests:
+          - not_null
+      - name: DATE
+        tests:
+          - not_null
+
+  - name: raw_store
+    description: "dbt model to create the store detail raw table"
+    columns:
+      - name: STORE
+        tests:
+          - unique
+          - not_null
