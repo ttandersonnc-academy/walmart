@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: raw_department
+  - name: department
     description: "dbt model to create the department detail raw table"
     columns:
       - name: STORE
@@ -14,7 +14,7 @@ models:
         tests:
           - not_null
 
-  - name: raw_store
+  - name: store
     description: "dbt model to create the store detail raw table"
     columns:
       - name: STORE

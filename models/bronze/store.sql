@@ -17,4 +17,4 @@ SELECT
     UPDATE_DTS,
     SOURCE_FILE_NAME,
     SOURCE_FILE_ROW_NUMBER
-FROM {{ source('landing', 'STORE') }}
+FROM {{ source('raw', 'STORE') }}
