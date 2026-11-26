@@ -6,7 +6,7 @@ sources:
     database: "{{ var('target_db') }}"
     schema: "{{ var('target_schema') }}"
     tables:
-      - name: LND_DEPARTMENT
+      - name: DEPARTMENT
         description: "Weekly sales by store and department, as landed from department CSV files"
-      - name: LND_STORE
+      - name: STORE
         description: "Store type and size, as landed from stores CSV files"
