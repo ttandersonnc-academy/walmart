@@ -2,7 +2,7 @@
     materialized='table',
     transient=true,
     pre_hook=copy_csv(
-        'LND_DEPARTMENT',
+        'DEPARTMENT',
         ['STORE','DEPT','DATE','WEEKLY_SALES','ISHOLIDAY'],
         var('dept_file_pattern')
     ),
@@ -19,4 +19,4 @@ SELECT
     UPDATE_DTS,
     SOURCE_FILE_NAME,
     SOURCE_FILE_ROW_NUMBER
-FROM {{ source('landing', 'LND_DEPARTMENT') }}
+FROM {{ source('landing', 'DEPARTMENT') }}

@@ -2,7 +2,7 @@
     materialized='table',
     transient=true,
     pre_hook=copy_csv(
-        'LND_STORE',
+        'STORE',
         ['STORE','TYPE','SIZE'],
         var('store_file_pattern')
     ),
@@ -17,4 +17,4 @@ SELECT
     UPDATE_DTS,
     SOURCE_FILE_NAME,
     SOURCE_FILE_ROW_NUMBER
-FROM {{ source('landing', 'LND_STORE') }}
+FROM {{ source('landing', 'STORE') }}
