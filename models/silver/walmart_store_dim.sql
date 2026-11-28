@@ -62,6 +62,6 @@ FROM deduped
 
 {% if is_incremental() %}
 -- Only touch rows bronze has loaded since the last silver run
- WHERE bronze_insert_dts > (SELECT COALESCE(MAX(bronze_insert_dts), '1900-01-01'::TIMESTAMP_NTZ) FROM {{ this }})
+ WHERE bronze_insert_dts > (SELECT COALESCE(MAX(update_dts), '1900-01-01'::TIMESTAMP_NTZ) FROM {{ this }})
 {% endif %}
 
