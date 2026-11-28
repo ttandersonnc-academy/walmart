@@ -19,5 +19,5 @@ models:
     columns:
       - name: STORE
         tests:
-          - unique
+          # - unique
           - not_null

@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: silver_department
+    description: "Cleansed, de-duplicated weekly sales by store and department (SILVER.DEPARTMENT)"
+    columns:
+      - name: store_id
+        tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('store')
+                field: STORE
+      - name: dept_id
+        tests:
+          - not_null
+      - name: sales_date
+        tests:
+          - not_null
+      - name: weekly_sales
+        tests:
+          - not_null
+      - name: is_holiday
+        tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [true, false]
+                quote: false
+  - name: walmart_store_dim
+    description: "Cleansed, de-duplicated weekly sales by store and department (SILVER.DEPARTMENT)"
+    columns:
+      - name: store_id
+        tests:                
