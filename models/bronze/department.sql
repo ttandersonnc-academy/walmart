@@ -19,8 +19,4 @@ SELECT
     UPDATE_DTS,
     SOURCE_FILE_NAME,
     SOURCE_FILE_ROW_NUMBER
-<<<<<<< HEAD:models/bronze/department.sql
 FROM {{ source('BRONZE', 'DEPARTMENT') }}
-=======
-FROM {{ source('landing', 'DEPARTMENT') }}
->>>>>>> fc6862e03a477d4ae88dc93854e62ba6f7f24fcf:models/raw_department.sql
