@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: SILVER
+    description: "cleansed, datatypes, deduped data loaded from BRONZE tables"
+    database: "{{ var('target_db') }}"
+    schema: "{{ var('silver_schema') }}"
+    tables:
+      - name: DEPARTMENT
+        description: ""
+      - name: STORE
+        description: ""

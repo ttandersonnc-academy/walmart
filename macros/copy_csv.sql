@@ -15,7 +15,7 @@
 #}
 {% macro copy_csv(landing_table, columns, file_pattern) %}
 
-{%- set tbl = var('target_db') ~ '.' ~ var('target_schema') ~ '.' ~ landing_table -%}
+{%- set tbl = var('target_db') ~ '.' ~ var('bronze_schema') ~ '.' ~ landing_table -%}
 
 CREATE TRANSIENT TABLE IF NOT EXISTS {{ tbl }} (
 {%- for col in columns %}
@@ -27,7 +27,15 @@ CREATE TRANSIENT TABLE IF NOT EXISTS {{ tbl }} (
     SOURCE_FILE_ROW_NUMBER NUMBER
 );
 
-TRUNCATE TABLE {{ tbl }};
+-- TRUNCATE TABLE {{ tbl }};
+-- DONT truncate table if a file doenst exist
+DELETE FROM {{ tbl }}
+WHERE EXISTS (
+    SELECT 1
+    FROM @{{ var('stage_name') }}
+        (FILE_FORMAT => '{{ var("file_format_csv") }}', PATTERN => '{{ file_pattern }}')
+    LIMIT 1
+);
 
 COPY INTO {{ tbl }}
 FROM

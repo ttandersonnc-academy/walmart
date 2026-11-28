@@ -1,10 +1,10 @@
 version: 2
 
 sources:
-  - name: landing
-    description: "Landing tables loaded from S3 CSVs by the copy_csv macro (all data columns VARCHAR)"
+  - name: BRONZE
+    description: "raw tables loaded from S3 CSVs by the copy_csv macro (all data columns VARCHAR)"
     database: "{{ var('target_db') }}"
-    schema: "{{ var('target_schema') }}"
+    schema: "{{ var('bronze_schema') }}"
     tables:
       - name: DEPARTMENT
         description: "Weekly sales by store and department, as landed from department CSV files"
