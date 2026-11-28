@@ -17,8 +17,4 @@ SELECT
     UPDATE_DTS,
     SOURCE_FILE_NAME,
     SOURCE_FILE_ROW_NUMBER
-<<<<<<< HEAD:models/bronze/store.sql
 FROM {{ source('BRONZE', 'STORE') }}
-=======
-FROM {{ source('landing', 'STORE') }}
->>>>>>> fc6862e03a477d4ae88dc93854e62ba6f7f24fcf:models/raw_store.sql
